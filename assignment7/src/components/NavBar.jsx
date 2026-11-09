@@ -1,7 +1,9 @@
 import { NavLink } from "react-router";
+import { useAuth } from "../context/AuthContext.jsx";
 import { selectItemCount, useCartStore } from "../store/cartStore.js";
 
 function NavBar() {
+  const { user, logOut } = useAuth();
   const itemCount = useCartStore(selectItemCount);
 
   return (
@@ -15,7 +17,16 @@ function NavBar() {
         <NavLink to="/cart">Cart ({itemCount})</NavLink>
       </nav>
       <div className="nav-actions">
-        <NavLink to="/login">Login</NavLink>
+        {user ? (
+          <>
+            <span>{user.username}</span>
+            <button type="button" onClick={logOut}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
       </div>
     </header>
   );
