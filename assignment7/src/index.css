@@ -1,10 +1,20 @@
-:root {
+:root,
+.theme-light {
   --bg: #ffffff;
   --text: #1f2328;
   --surface: #f4f5f7;
   --border: #d0d7de;
   --accent: #0969da;
   --error: #cf222e;
+}
+
+.theme-dark {
+  --bg: #0d1117;
+  --text: #e6edf3;
+  --surface: #161b22;
+  --border: #30363d;
+  --accent: #2f81f7;
+  --error: #ff7b72;
 }
 
 *,
@@ -25,6 +35,15 @@ button {
 }
 
 input,
+select,
+button {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+input,
 select {
   padding: 6px 8px;
 }
@@ -33,7 +52,7 @@ img {
   max-width: 100%;
 }
 
-
+/* Layout */
 .app {
   min-height: 100vh;
   display: flex;
